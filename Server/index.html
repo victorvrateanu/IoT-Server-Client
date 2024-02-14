@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Table Example</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <?php
+    // Database connection details
+    $host = "192.168.100.10";
+    $username = "myuser";
+    $password = "admin";
+    $database = "bazadate1";
+
+    // Create a connection to the database
+    $connection = new mysqli($host, $username, $password, $database);
+
+    // Check if the connection was successful
+    if ($connection->connect_error) {
+      die("Nu s-a putut efectua conectarea la baza de date: " . $connection->connect_error);
+    }
+
+    // Query to retrieve the data from the database
+    $query = "SELECT ID, Detalii, Data FROM your_table";
+    $result = $connection->query($query);
+
+    // Check if the query was successful
+    if ($result === false) {
+      die("Query error: " . $connection->error);
+    }
+
+    if ($result->num_rows > 0) {
+      echo "<table>";
+      echo "<tr><th>ID</th><th>Detalii</th><th>Data</th></tr>";
+      
+      // Output data of each row
+      while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["ID"] . "</td>";
+        echo "<td>" . $row["Detalii"] . "</td>";
+        echo "<td>" . $row["Data"] . "</td>";
+        echo "</tr>";
+      }
+
+      echo "</table>";
+    } else {
+      echo "No data found.";
+    }
+
+    // Close the database connection
+    $connection->close();
+  ?>
+</body>
+</html>
