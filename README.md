@@ -6,3 +6,6 @@ the client and server. When the data is received by the client, it will dynamica
 create a website using HTML and PHP where the client can see and send commands to the server. Also, the server uses
 facial recognition and sends emails containing photos and data to security when someone who has no access to the
 room enters through the door. 
+
+https://github.com/victorvrateanu/IoT-Server-Client/assets/73831398/2b8b6c61-4210-4407-9245-47e73f5fa922
+
